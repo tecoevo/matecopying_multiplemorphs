@@ -1,24 +1,29 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# plot what?
-conformism = False # anticonformism is false
+# boolean: conformism - True, anticonformism - False
+conformism = False
 
 # parameters
 u = 0.01 # fraction of matings in the training period
 q1 = 2 # quality of male morph 1
 q2 = 2.3 # quality of male morph 2
-a = 0.18 # factor of assymetry
+a = 0.2 # factor of assymetry
+
 if conformism: b = 20 # extent of conformism
 else: b = -20
 
-c_arr = np.linspace(0,1,1000) # range of gamma values
+# range of gamma values (probability of copying)
+c_arr = np.linspace(0,1,1000)
+
 Y = [] # values of the internal fixed point for different gamma values
 Z = [] # to plot the values of the first fixed point
 
 for c in c_arr:
     k = -1 + (q1+q2)/(q2 + ((q2-q1)*(u/(1-u) + 1-c)/(a*c)))
     y = min(0.5 - (np.log(k)/b), 1)
+
+    # z indicates the existence of the third (internal) fixed point
     if y<1: z = 1
     else: z = 0
 
@@ -50,7 +55,6 @@ if conformism: plt.fill_between(c_arr,Y,np.max(Y), color='#E9B360')
 else: plt.fill_between(c_arr, [1]*len(c_arr), color='#E9B360')
 plt.fill_between(c_arr,Y,[0]*len(c_arr), color='#588EF2')
 
-if conformism: filename="conformism.pdf"
-else: filename="anticonformism.pdf"
+if conformism: filename="bifurcation-diagram-conformism.pdf"
+else: filename="bifurcation-diagram-anticonformism.pdf"
 plt.savefig(filename, format='pdf')
-#plt.show()

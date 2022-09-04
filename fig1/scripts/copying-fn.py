@@ -1,13 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(0,1,100)
-
+# extent of conformism (beta)
 b = 20
 
 # logistic copying function
-y = 1/(1+np.exp(-b*(x-0.5))) 
-
+x = np.linspace(0,1,100)
+y = 1/(1+np.exp(-b*(x-0.5)))
 
 fig, ax = plt.subplots()
 with plt.style.context('bmh'):
@@ -21,7 +20,4 @@ with plt.style.context('bmh'):
 plt.grid()
 plt.xticks([])
 plt.yticks([])
-#plt.plot(x,x,'k--', linewidth=0.5)
-#labelLines(plt.gca().get_lines(), zorder=2)        
-#plt.legend()
 fig.savefig("copying-fn.svg", format="svg")

@@ -9,6 +9,10 @@ from itertools import product
 from joblib import Parallel, delayed
 import os
 import itertools
+
+#script_dir = os.path.dirname(os.path.abspath(__file__))
+#sys.path.append(script_dir)
+
 import matecopying_params as params
 from matecopying_functions import *
 
@@ -36,7 +40,7 @@ else:
 
 ### run the simulations in parallel
 if m==2:
-    results = Parallel(n_jobs=5)(delayed(run_simulations_2m)(y,c) for y,c in product(y_range, c_range))
+    results = Parallel(n_jobs=5)(delayed(run_simulations_2m)(y,c, out_dir) for y,c in product(y_range, c_range))
     #print(results)
     allfiles = os.listdir(out_dir)
     files = sorted(allfiles)

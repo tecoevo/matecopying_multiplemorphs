@@ -15,6 +15,10 @@ n_runs = 50 # number of independent runs
 m = 2 # number of male morphs
 T = 25 # number of generations
 b = 2 # extent of conformism (beta)
+copying_type = 2 # type of mate copying to determine copying probabilities
+factor = 2 # modulates the extent of conformity/anticonfrmity, higher means less conformity
+threshold_2m = 0.7
+threshold_3m = 0.5
 
 if m==2:
     y_range = np.around(np.arange(0,1.001,0.01), 2)

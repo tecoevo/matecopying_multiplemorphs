@@ -18,6 +18,10 @@ b = params.b # extent of conformism (beta)
 y_range = params.y_range # range of initial frequencies
 q_values = params.q_values # male morph qualities
 c_range = params.c_range # range of copying probabilities
+copying_type = params.copying_type # type of mate copying to determine copying probabilities
+factor = params.factor # modulates the extent of conformity/anticonfrmity, higher means less conformity
+threshold_2m = params.threshold_2m # threshold for copying type 3, m=2
+threshold_3m = params.threshold_3m # threshold for copying type 3, m>2
 
 def generate_grid(n):
     grid = []
@@ -38,14 +42,167 @@ def choose(m, array, probabilities):
 
     return chosen
 
+def compute_D(greater_vals, b, factor):
+    #if b<0: 
+    #    print("Invalid value of b, assuming b=1")
+    #    b=1
+    if b>=1:
+        y_max = np.max(greater_vals)
+        D_max = (1/y_max - 1)*sum(greater_vals)
+        return D_max/factor
+    elif b<1:
+        D_min = -sum(greater_vals)
+        return D_min/factor
+    
+def copying_probabilities(y_t, b, factor, copying_type=1):
+    """ computes switching probabilities based on the type of mate copying: 
+    1: continuous copying function
+    2: discrete copying function 
+    3: custom copying function (more realistic)
+    Output: array probabilities of switching to a given morph (may or may not
+    depend on the chosen female)"""
+
+    if copying_type==1:
+        if b>=1: # not normalised, but will be normalised later for this case
+            probs = (y_t**b)/(y_t**b + (1-y_t)**b)
+        else: # normalised
+            if b < 0:
+                probs = np.where((y_t == 0) | (y_t == 1), y_t, (y_t**b) / (y_t**b + (1-y_t)**b)) 
+            else:
+                probs = (y_t**b)/(y_t**b + (1-y_t)**b)
+            
+            # normalizing the probabilities
+            prob_sum = sum(probs)
+            probs = probs/prob_sum
+            
+    elif copying_type==2:
+        if b==1: probs = y_t # neutral copying
+        else: 
+            majority = 1/len(y_t)
+            vec = np.array(y_t)
+            
+            # partition the frequencies
+            greater_idx = np.where(vec > majority)[0]
+            equal_idx = np.where(vec == majority)[0]
+            less_idx = np.where(vec < majority)[0]
+
+            greater_vals = vec[greater_idx]
+            equal_vals = vec[equal_idx]
+            less_vals = vec[less_idx]
+
+            # compute value of D
+            if len(greater_vals)==0: D = 0
+            else: D = compute_D(greater_vals, b, factor)
+
+            # convert to copying probabilities
+            # greater than majority
+            greater_vals = greater_vals + (greater_vals/sum(greater_vals))*D
+            # less than majority
+            inv_y = np.zeros_like(less_vals, dtype=float)
+            mask = np.abs(less_vals) > 1e-12
+            inv_y[mask] = 1 / less_vals[mask]
+
+            if np.sum(inv_y) == 0:
+                factors = np.zeros_like(inv_y)
+            else:
+                factors = inv_y / np.sum(inv_y)
+                
+            less_vals = less_vals - factors*D
+            #inv_y = 1/less_vals
+            #factors = inv_y / np.sum(inv_y)
+            #less_vals = less_vals - factors*D
+            
+            # construct vector of copying probabilities
+            probs = np.empty_like(vec)
+            probs[greater_idx] = greater_vals
+            probs[equal_idx] = equal_vals
+            probs[less_idx] = less_vals
+            probs = np.where(probs < 1e-12, 0, probs)
+
+            #normalize
+            prob_sum = sum(probs)
+            probs = probs/prob_sum
+
+    elif copying_type==3:
+        majority = 1/m
+        vec = np.array(y_t)
+    
+        # partition the frequencies 
+        greater_idx = np.where(vec > majority)[0]
+        equal_idx = np.where(vec == majority)[0]
+        less_idx = np.where(vec < majority)[0]
+
+        greater_vals = vec[greater_idx]
+        equal_vals = vec[equal_idx]
+        less_vals = vec[less_idx]
+
+        # compute value of D
+        if len(greater_vals)==0: 
+            D_conf = 0
+            D_anti = 0
+        else: 
+            D_conf = compute_D(greater_vals, b=2, factor = factor)
+            D_anti = compute_D(greater_vals, b=-2, factor = factor)
+
+        ##### testing
+        #print([D_conf, D_anti, y_t])
+
+        if m==2:
+            threshold = threshold_2m
+        else: # for more than 2 morphs
+            threshold = threshold_3m
+
+        if len(greater_vals)!=0: 
+            mask_conf = greater_vals < threshold
+            mask_anti = greater_vals >= threshold
+
+            # convert to copying probabilities
+            # greater than majority (adjust according to threshold)
+            greater_vals[mask_conf] += (greater_vals[mask_conf] / np.sum(greater_vals)) * D_conf
+            greater_vals[mask_anti] += (greater_vals[mask_anti] / np.sum(greater_vals)) * D_anti
+            # less than majority
+            inv_y = np.zeros_like(less_vals, dtype=float)
+            mask = np.abs(less_vals) > 1e-5
+            inv_y[mask] = 1 / less_vals[mask]
+
+            if np.sum(inv_y) == 0:
+                factors = np.zeros_like(inv_y)
+            else:
+                factors = inv_y / np.sum(inv_y)
+        
+            less_vals = less_vals - factors * D_conf
+            #print(factors)
+            #inv_y = 1/less_vals
+            #factors = inv_y / np.sum(inv_y)
+            #less_vals = less_vals - factors*D_conf
+                
+        # construct vector of copying probabilities
+        probs = np.empty_like(vec)
+        probs[greater_idx] = greater_vals
+        probs[equal_idx] = equal_vals
+        probs[less_idx] = less_vals
+
+        probs = np.where(probs > 1e-5, probs, 0)
+        #print(probs)           
+        #print(y_t)
+
+        #normalize
+        prob_sum = sum(probs)
+        probs = probs/prob_sum
+        #print(less_vals, equal_vals, greater_vals, probs)
+
+    return probs
+    
 def one_generation(m, b, c, y_t, q_values, n_population):
     """ simulating n_matings number of matings with a given copying probability"""
 
     q_proportion = q_values/sum(q_values)
     n_assort = np.round(q_proportion*n_population) # number of females that prefer each male morph (inherent prference)
     n_morphpop = np.round(y_t*n_population) # array of population of each morph
-    
+    n_tries = []
+
     for mating in range(int(n_matings)):
+        counter = 1
         # no copying
         if rnd.random()<(1-c):
             
@@ -55,6 +212,7 @@ def one_generation(m, b, c, y_t, q_values, n_population):
         
             if chosen_male!=chosen_fem:
                 while(chosen_fem!=chosen_male):
+                    counter+=1
                     chosen_fem = choose(m,n_assort, q_proportion)
                     chosen_male = choose(m,n_morphpop,y_t)
 
@@ -65,27 +223,31 @@ def one_generation(m, b, c, y_t, q_values, n_population):
             n_morphpop[chosen_male] += n_births # adding births to the male morph population 
         
         else: # copying
-            switching_probs = (y_t**b)/(y_t**b + (1-y_t)**b) # switching probabilities
             
-            chosen_fem = choose(m,n_assort,q_proportion)
-            # normalizing the probabilities
-            switching_probs[chosen_fem] = 0
-            prob_sum = sum(switching_probs)
-            switching_probs[chosen_fem] = np.maximum(1-prob_sum,0)
-
+            switching_probs = copying_probabilities(y_t, b, factor, copying_type = copying_type)
+            
             ### Pair choosing
-            new_pref = np.random.choice(range(m), p=switching_probs)
+            chosen_fem = choose(m,n_assort,q_proportion)
+            # normalizing the probabilities, for copying type 1
+            probs = switching_probs
+            probs[chosen_fem] = 0
+            prob_sum = sum(probs)
+            probs[chosen_fem] = np.maximum(1-prob_sum,0)
+            
+            new_pref = np.random.choice(range(m), p=probs)
             chosen_male = choose(m, n_morphpop, y_t)
 
             if chosen_male!=new_pref:
                 while(new_pref!=chosen_male):
+                    counter+=1
                     chosen_fem = choose(m,n_assort,q_proportion)
-                    # normalizing the probabilities
-                    switching_probs[chosen_fem] = 0
-                    prob_sum = sum(switching_probs)
-                    switching_probs[chosen_fem] = np.maximum(1-prob_sum,0)
+                    # normalizing the probabilities, for copying type 1
+                    probs = switching_probs
+                    probs[chosen_fem] = 0
+                    prob_sum = sum(probs)
+                    probs[chosen_fem] = np.maximum(1-prob_sum,0)
             
-                    new_pref = np.random.choice(range(m), p=switching_probs)
+                    new_pref = np.random.choice(range(m), p=probs)
                     chosen_male = choose(m,n_morphpop,y_t)
 
             # getting number of births
@@ -93,8 +255,8 @@ def one_generation(m, b, c, y_t, q_values, n_population):
             n_births = np.random.poisson(q,1)[0]
             n_morphpop[chosen_male] += n_births # adding births to the male morph population 
         
+        n_tries.append(counter)
         ### deaths
-        
         n_deaths = n_births # keeping the population constant
         for death in range(n_deaths):
             dying_one = choose(m, n_morphpop, y_t)
@@ -105,8 +267,7 @@ def one_generation(m, b, c, y_t, q_values, n_population):
         y_t = n_morphpop/sum(n_morphpop)
         if(1 in y_t):
             break
-    
-
+    #print(np.mean(n_tries))
     return y_t
 
 def one_run(n_population, q_values, m, T, b, c, y_0):

@@ -26,29 +26,61 @@ b = params.b # extent of conformism (beta)
 y_range = params.y_range # range of initial frequencies
 q_values = params.q_values # male morph qualities
 c_range = params.c_range # range of copying probabilities
-
+copying_type = params.copying_type
+factor = params.factor
+threshold_2m = params.threshold_2m # threshold for copying type 3, m=2
+threshold_3m = params.threshold_3m # threshold for copying type 3, m>2
 
 # directory to save simulation data
-out_dir = "simulation_data/final_test_2m/"
-out_file = "simulation_data/final_test_2m/out.csv"
+out_dir = "simulation_data/2m_disc_conf/"
+data_dir = f'{out_dir}/data'
+out_file = f'{out_dir}/out.csv'
+params_file = f'{out_dir}/params.csv'
+comment_file = f'{out_dir}/comment.csv'
+comment = ""
+#, thresholds = (0.7, 0.5)
 
 # create directory if it doesn't exist
-if not os.path.exists(out_dir):
+if not os.path.exists(data_dir):
     os.makedirs(out_dir)
+    os.makedirs(data_dir)
 else:
-    print(f"Directory '{out_dir}' already exists.")
+    print(f"Directory '{data_dir}' already exists.")
+
+
+# save params and comment to files in the output dir
+params_dict = {
+    "n_population": n_population,
+    "n_matings": n_matings,
+    "n_runs": n_runs,
+    "m": m,
+    "T": T,
+    "b": b,
+    "y_range": y_range,
+    "q_values": q_values,
+    "c_range": c_range,
+    "copying_type": copying_type,
+    "factor": factor,
+    "threshold_2m": threshold_2m,
+    "threshold_3m": threshold_3m
+}
+
+params_df = pd.DataFrame(list(params_dict.items()), columns=["Parameter", "Value"])
+params_df.to_csv(params_file, index=False)
+
+pd.DataFrame({"Comment": [comment]}).to_csv(comment_file, index=False)
 
 ### run the simulations in parallel
 if m==2:
-    results = Parallel(n_jobs=5)(delayed(run_simulations_2m)(y,c, out_dir) for y,c in product(y_range, c_range))
+    results = Parallel(n_jobs=5)(delayed(run_simulations_2m)(y,c, data_dir) for y,c in product(y_range, c_range))
     #print(results)
-    allfiles = os.listdir(out_dir)
+    allfiles = os.listdir(data_dir)
     files = sorted(allfiles)
     params_lattice = list(itertools.product(y_range, c_range))
     data = []
     for f in files:
         coordinate = params_lattice[files.index(f)]
-        df = pd.read_pickle(f'{out_dir}/{f}')
+        df = pd.read_pickle(f'{data_dir}/{f}')
 
         # average the outcome over all the runs
         x_coord = coordinate[1]
@@ -60,15 +92,15 @@ if m==2:
     df_save.to_csv(out_file, index=False)
 
 if m==3:
-    results = Parallel(n_jobs=5)(delayed(run_simulations_3m)(y,c) for y,c in product(y_range, c_range))
+    results = Parallel(n_jobs=5)(delayed(run_simulations_3m)(y,c, data_dir) for y,c in product(y_range, c_range))
     #print(results)
-    allfiles = os.listdir(out_dir)
+    allfiles = os.listdir(data_dir)
     files = sorted(allfiles)
     x_coords = [point[0] for point in y_range]
     y_coords = [point[2] for point in y_range]
 
     for c in c_range:
-        z_values =[fix_fractions(x,z,c,out_dir) for x,y,z in y_range]
+        z_values =[fix_fractions(x,z,c,data_dir) for x,y,z in y_range]
         highest, middle, lowest = zip(*z_values)
         df_save = pd.DataFrame({'h':x_coords, 'l':y_coords, 'h_eq':highest, 'l_eq':lowest})
         df_save.to_csv(f'{out_dir}/out_c{c}.csv', index=False)

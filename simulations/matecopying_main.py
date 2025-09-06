@@ -32,7 +32,7 @@ threshold_2m = params.threshold_2m # threshold for copying type 3, m=2
 threshold_3m = params.threshold_3m # threshold for copying type 3, m>2
 
 # directory to save simulation data
-out_dir = "simulation_data/3m_cont_conf/"
+out_dir = "simulation_data/2m_cont_conf_r2/"
 data_dir = f'{out_dir}/data'
 out_file = f'{out_dir}/out.csv'
 params_file = f'{out_dir}/params.csv'

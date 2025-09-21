@@ -32,12 +32,12 @@ threshold_2m = params.threshold_2m # threshold for copying type 3, m=2
 threshold_3m = params.threshold_3m # threshold for copying type 3, m>2
 
 # directory to save simulation data
-out_dir = "simulation_data/2m_evolvec_changerate5_0.005/"
+out_dir = "simulation_data/2m_evolvec_changerate6_0.01_win20/"
 data_dir = f'{out_dir}/data'
 out_file = f'{out_dir}/out.csv'
 params_file = f'{out_dir}/params.csv'
 comment_file = f'{out_dir}/comment.csv'
-comment = "change in c_t in every mating = +0.005/-0.005. sign depends on change in average delta y."
+comment = "change in c_t in every mating = +0.01/-0.01. sign depends on change in average delta y. memory window=20, error corrected"
 
 
 # create directory if it doesn't exist

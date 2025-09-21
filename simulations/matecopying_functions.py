@@ -153,6 +153,8 @@ def copying_probabilities(y_t, b, factor, copying_type=1):
             threshold = threshold_3m
 
         if len(greater_vals)!=0: 
+            #mask_conf = greater_vals >= threshold
+            #mask_anti = greater_vals < threshold
             mask_conf = greater_vals < threshold
             mask_anti = greater_vals >= threshold
 

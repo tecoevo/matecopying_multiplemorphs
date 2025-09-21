@@ -12,7 +12,7 @@ def generate_grid(n):
 n_population = 100 # male population, total population is twice this number
 n_matings = 100 # number of matings in one generation
 n_runs = 50 # number of independent runs
-m = 3 # number of male morphs
+m = 2 # number of male morphs
 T = 25 # number of generations
 b = 2 # extent of conformism (beta)
 copying_type = 1 # type of mate copying to determine copying probabilities
@@ -22,9 +22,9 @@ threshold_3m = 0.5
 
 if m==2:
     y_range = np.around(np.arange(0,1.001,0.01), 2)
-    q_values = np.array([3,2])
+    q_values = np.array([4,2])
     c_range = np.around(np.arange(0,1.001,0.01), 2) # mate copying probability (gamma)
 if m==3:
     y_range = generate_grid(50)
-    q_values = np.array([3,2.5,2])
+    q_values = np.array([4,3,2])
     c_range = np.around(np.arange(0,1.001,0.05), 2) # mate copying probability (gamma)

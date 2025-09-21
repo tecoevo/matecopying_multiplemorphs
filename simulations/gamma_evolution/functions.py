@@ -193,21 +193,17 @@ def copying_probabilities(y_t, b, factor, copying_type=1):
 
     return probs
     
-def one_generation(m, b, c_t, y_t, q_values, n_population):
+def one_generation(m, b, c_t, y_t, q_values, n_population, delta_y_history):
     """ simulating n_matings number of matings with a given copying probability"""
 
     q_proportion = q_values/sum(q_values)
     n_assort = np.round(q_proportion*n_population) # number of females that prefer each male morph (inherent prference)
     n_morphpop = np.round(y_t*n_population) # array of population of each morph
     n_tries = []
-    y_og = y_t
-
-    ## memory
-    window_size = 10 
-    delta_y_history = np.zeros(window_size)
 
     for mating in range(int(n_matings)):
         counter = 1
+        y_og = y_t
         # no copying
         if rnd.random()<(1-c_t):
             
@@ -283,9 +279,9 @@ def one_generation(m, b, c_t, y_t, q_values, n_population):
         ## update copying probability
         if (c_t < 1 and c_t > 0):
             if average_delta_y > 0:
-                c_t -= 0.005 
+                c_t -= 0.01 
             else:
-                c_t += 0.005
+                c_t += 0.01
         
             #q_avg = np.average(q_values, weights=y_t)
             #q_avg = np.mean(q_values)
@@ -304,16 +300,19 @@ def one_generation(m, b, c_t, y_t, q_values, n_population):
             #c_t += dc_t
     #print(np.mean(n_tries))
 
-    return y_t, c_t
+    return y_t, c_t, delta_y_history
 
 def one_run(n_population, q_values, m, T, b, c, y_0):
     c_t = c
     y_t = y_0
     y_hist = [y_0]
     c_hist = [c]
+    ## memory
+    window_size = 20 
+    delta_y_history = np.zeros(window_size)
     for t in range(T):
         if(1 not in y_t):
-            y_t, c_t = one_generation(m, b, c_t, y_t, q_values, n_population) # updating frequencies after one generation
+            y_t, c_t, delta_y_history = one_generation(m, b, c_t, y_t, q_values, n_population, delta_y_history) # updating frequencies after one generation
             y_hist.append(y_t)
             c_hist.append(c_t)
         else:

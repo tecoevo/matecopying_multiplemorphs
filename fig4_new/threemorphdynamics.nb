@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       154,          7]
-NotebookDataLength[   2267670,      39819]
-NotebookOptionsPosition[   2263376,      39738]
-NotebookOutlinePosition[   2263793,      39755]
-CellTagsIndexPosition[   2263750,      39752]
+NotebookDataLength[   2268130,      39833]
+NotebookOptionsPosition[   2263933,      39753]
+NotebookOutlinePosition[   2264350,      39770]
+CellTagsIndexPosition[   2264307,      39767]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -17301,23 +17301,24 @@ RKfxuBL8A8czj34=
            Annotation[#, 
             HoldForm[$CellContext`y1] (0. + 
               2 (0.13333333333333333` + 
-                0.4 HoldForm[$CellContext`y1]^2/((1 - 
-                   HoldForm[$CellContext`y1])^2 + 
-                 HoldForm[$CellContext`y1]^2)) - 2 
+                0.4 (HoldForm[$CellContext`y1]^2/((1 - 
+                    HoldForm[$CellContext`y1])^2 + 
+                  HoldForm[$CellContext`y1]^2))) - 2 
               HoldForm[$CellContext`y1] (0.13333333333333333` + 
-               0.4 HoldForm[$CellContext`y1]^2/((1 - 
-                  HoldForm[$CellContext`y1])^2 + 
-                HoldForm[$CellContext`y1]^2)) - 2.5 
+               0.4 (HoldForm[$CellContext`y1]^2/((1 - 
+                   HoldForm[$CellContext`y1])^2 + 
+                 HoldForm[$CellContext`y1]^2))) - 2.5 
               HoldForm[$CellContext`y2] (0.16666666666666666` + 
-               0.4 HoldForm[$CellContext`y2]^2/((1 - 
-                  HoldForm[$CellContext`y2])^2 + 
-                HoldForm[$CellContext`y2]^2)) - 
+               0.4 (HoldForm[$CellContext`y2]^2/((1 - 
+                   HoldForm[$CellContext`y2])^2 + 
+                 HoldForm[$CellContext`y2]^2))) - 
               3 (1 - HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2]) (
-               0.2 + 0.4 (1 - HoldForm[$CellContext`y1] - 
-                  HoldForm[$CellContext`y2])^2/((1 - 
-                  HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2])^2 + (
-                  HoldForm[$CellContext`y1] + HoldForm[$CellContext`y2])^2))) == 
-            0, "Tooltip"]& ]}], {}}, {GraphicsComplexBox[CompressedData["
+               0.2 + 0.4 ((1 - HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2/((1 - 
+                   HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
+                   HoldForm[$CellContext`y2])^2)))) == 0, 
+            "Tooltip"]& ]}], {}}, {GraphicsComplexBox[CompressedData["
 1:eJxFlHlUjQkYxht1VDMu7bS7pmXqJjRZxqSnLE0bQjFppoWs4SZLkjiW6pZS
 miOdEkViYrTqpgV1E0nq3u53l++u36WxtCCFK8PcmXPmznvOe97z/PP+8by/
 56VvYK7eNEFHRydU0//MmUtsBlTzrPDKIX10o6UKtbrlHwwP5UD9leOd0lIK
@@ -17443,23 +17444,24 @@ BPl83jmZRh+NW5DUKiHx1My2s1+jU9trOX0a/eetud8unqFCb8UWk4WavHbn
            Annotation[#, 
             HoldForm[$CellContext`y2] (0. - 2 
               HoldForm[$CellContext`y1] (0.13333333333333333` + 
-               0.4 HoldForm[$CellContext`y1]^2/((1 - 
-                  HoldForm[$CellContext`y1])^2 + 
-                HoldForm[$CellContext`y1]^2)) + 
+               0.4 (HoldForm[$CellContext`y1]^2/((1 - 
+                   HoldForm[$CellContext`y1])^2 + 
+                 HoldForm[$CellContext`y1]^2))) + 
               2.5 (0.16666666666666666` + 
-                0.4 HoldForm[$CellContext`y2]^2/((1 - 
-                   HoldForm[$CellContext`y2])^2 + 
-                 HoldForm[$CellContext`y2]^2)) - 2.5 
+                0.4 (HoldForm[$CellContext`y2]^2/((1 - 
+                    HoldForm[$CellContext`y2])^2 + 
+                  HoldForm[$CellContext`y2]^2))) - 2.5 
               HoldForm[$CellContext`y2] (0.16666666666666666` + 
-               0.4 HoldForm[$CellContext`y2]^2/((1 - 
-                  HoldForm[$CellContext`y2])^2 + 
-                HoldForm[$CellContext`y2]^2)) - 
+               0.4 (HoldForm[$CellContext`y2]^2/((1 - 
+                   HoldForm[$CellContext`y2])^2 + 
+                 HoldForm[$CellContext`y2]^2))) - 
               3 (1 - HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2]) (
-               0.2 + 0.4 (1 - HoldForm[$CellContext`y1] - 
-                  HoldForm[$CellContext`y2])^2/((1 - 
-                  HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2])^2 + (
-                  HoldForm[$CellContext`y1] + HoldForm[$CellContext`y2])^2))) == 
-            0, "Tooltip"]& ]}], {}}}, {{{
+               0.2 + 0.4 ((1 - HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2/((1 - 
+                   HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
+                   HoldForm[$CellContext`y2])^2)))) == 0, 
+            "Tooltip"]& ]}], {}}}, {{{
        0.4999999999999997, -0.49999999999999994`}, {-0.8660254037844388, \
 -0.8660254037844385}}, {0.49999999999999956`, 0.8660254037844385}}], 
      GeometricTransformationBox[{{{}, 
@@ -18297,7 +18299,7 @@ w2xmMZMZTCeYaUxlCkFMZhITmTD2hRGX7WhM
             "]]}}], {}}, {{}, {
          {RGBColor[
           0.33333333333333337`, 0.33333333333333337`, 
-           0.33333333333333337`], {}}, 
+           0.33333333333333337`]}, 
          {RGBColor[
           0.33333333333333337`, 0.33333333333333337`, 0.33333333333333337`], 
           PolygonBox[CompressedData["
@@ -25644,24 +25646,25 @@ pmLn8w+SswKUeJpBWzXUxWKGfJIf+IsSFrtWjQ/arsA/aV93jQ==
            
            Annotation[#, 
             HoldForm[$CellContext`y1] (0. + 
-              2 (0. + 0.8 
-                 HoldForm[$CellContext`y1]^2/((1 - 
-                   HoldForm[$CellContext`y1])^2 + 
-                 HoldForm[$CellContext`y1]^2)) - 2 
+              2 (0. + 0.8 (
+                  HoldForm[$CellContext`y1]^2/((1 - 
+                    HoldForm[$CellContext`y1])^2 + 
+                  HoldForm[$CellContext`y1]^2))) - 2 
               HoldForm[$CellContext`y1] (0. + 
-               0.8 HoldForm[$CellContext`y1]^2/((1 - 
-                  HoldForm[$CellContext`y1])^2 + 
-                HoldForm[$CellContext`y1]^2)) - 2.5 
+               0.8 (HoldForm[$CellContext`y1]^2/((1 - 
+                   HoldForm[$CellContext`y1])^2 + 
+                 HoldForm[$CellContext`y1]^2))) - 2.5 
               HoldForm[$CellContext`y2] (0. + 
-               0.8 HoldForm[$CellContext`y2]^2/((1 - 
-                  HoldForm[$CellContext`y2])^2 + 
-                HoldForm[$CellContext`y2]^2)) - 
+               0.8 (HoldForm[$CellContext`y2]^2/((1 - 
+                   HoldForm[$CellContext`y2])^2 + 
+                 HoldForm[$CellContext`y2]^2))) - 
               3 (1 - HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2]) (
-               0. + 0.8 (1 - HoldForm[$CellContext`y1] - 
-                  HoldForm[$CellContext`y2])^2/((1 - 
-                  HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2])^2 + (
-                  HoldForm[$CellContext`y1] + HoldForm[$CellContext`y2])^2))) == 
-            0, "Tooltip"]& ]}], {}}, {GraphicsComplexBox[CompressedData["
+               0. + 0.8 ((1 - HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2/((1 - 
+                   HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
+                   HoldForm[$CellContext`y2])^2)))) == 0, 
+            "Tooltip"]& ]}], {}}, {GraphicsComplexBox[CompressedData["
 1:eJxFlHs01HkYxmfpaiXakXRjcksunYoimwdJpiVtu5giDcUql0lbGbGKo7ZD
 VoSs3LqpEJFiR6qRYUK5/mZ+c/WLdHLpZEsXUW27Z5vec97z/vP94/083/d5
 GEGcrcFqNBot8HP/O63WLxzuWz0f5vm7F1jxKJD7JmNxNgYhjy0vO2dQqOvg
@@ -25791,23 +25794,24 @@ Pfoha5TQf3YkdOszCh1+MRoOTCX+ATqbCr0=
            Annotation[#, 
             HoldForm[$CellContext`y2] (0. - 2 
               HoldForm[$CellContext`y1] (0. + 
-               0.8 HoldForm[$CellContext`y1]^2/((1 - 
-                  HoldForm[$CellContext`y1])^2 + 
-                HoldForm[$CellContext`y1]^2)) + 
-              2.5 (0. + 0.8 
-                 HoldForm[$CellContext`y2]^2/((1 - 
-                   HoldForm[$CellContext`y2])^2 + 
-                 HoldForm[$CellContext`y2]^2)) - 2.5 
+               0.8 (HoldForm[$CellContext`y1]^2/((1 - 
+                   HoldForm[$CellContext`y1])^2 + 
+                 HoldForm[$CellContext`y1]^2))) + 
+              2.5 (0. + 0.8 (
+                  HoldForm[$CellContext`y2]^2/((1 - 
+                    HoldForm[$CellContext`y2])^2 + 
+                  HoldForm[$CellContext`y2]^2))) - 2.5 
               HoldForm[$CellContext`y2] (0. + 
-               0.8 HoldForm[$CellContext`y2]^2/((1 - 
-                  HoldForm[$CellContext`y2])^2 + 
-                HoldForm[$CellContext`y2]^2)) - 
+               0.8 (HoldForm[$CellContext`y2]^2/((1 - 
+                   HoldForm[$CellContext`y2])^2 + 
+                 HoldForm[$CellContext`y2]^2))) - 
               3 (1 - HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2]) (
-               0. + 0.8 (1 - HoldForm[$CellContext`y1] - 
-                  HoldForm[$CellContext`y2])^2/((1 - 
-                  HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2])^2 + (
-                  HoldForm[$CellContext`y1] + HoldForm[$CellContext`y2])^2))) == 
-            0, "Tooltip"]& ]}], {}}}, {{{
+               0. + 0.8 ((1 - HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2/((1 - 
+                   HoldForm[$CellContext`y1] - 
+                   HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
+                   HoldForm[$CellContext`y2])^2)))) == 0, 
+            "Tooltip"]& ]}], {}}}, {{{
        0.4999999999999997, -0.49999999999999994`}, {-0.8660254037844388, \
 -0.8660254037844385}}, {0.49999999999999956`, 0.8660254037844385}}], 
      GeometricTransformationBox[{{{}, 
@@ -26467,12 +26471,6 @@ Cell["Trajectory", "Section",
  CellChangeTimes->{{3.9476790402830887`*^9, 
   3.947679041843409*^9}},ExpressionUUID->"934e3969-7966-4395-b107-\
 bd953f3b77bf"],
-
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.950260920609091*^9, 3.950260924195054*^9}, {
-  3.9502609575984993`*^9, 
-  3.950261015668935*^9}},ExpressionUUID->"0f8a3016-3b78-4dd8-95a4-\
-c91e0ffa2553"],
 
 Cell[BoxData[
  RowBox[{
@@ -31196,7 +31194,11 @@ Cell[BoxData[
     RowBox[{"Text", "[", 
      RowBox[{
       RowBox[{"Style", "[", 
-       RowBox[{"\"\<Morph 1\>\"", ",", "12"}], "]"}], ",", 
+       RowBox[{"\"\<Morph 1\>\"", ",", 
+        RowBox[{"FontFamily", "->", "\"\<Calibri\>\""}], ",", "12", ",", 
+        RowBox[{
+        "cols", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}]}], 
+       "]"}], ",", 
       RowBox[{"{", 
        RowBox[{"1.2", ",", "0"}], "}"}]}], "]"}], "]"}], ",", 
    "\[IndentingNewLine]", 
@@ -31204,7 +31206,11 @@ Cell[BoxData[
     RowBox[{"Text", "[", 
      RowBox[{
       RowBox[{"Style", "[", 
-       RowBox[{"\"\<Morph 2\>\"", ",", "12"}], "]"}], ",", 
+       RowBox[{"\"\<Morph 2\>\"", ",", 
+        RowBox[{"FontFamily", "->", "\"\<Calibri\>\""}], ",", "12", ",", 
+        RowBox[{
+        "cols", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}]}], 
+       "]"}], ",", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"-", "0.2"}], ",", "0"}], "}"}]}], "]"}], "]"}], ",", 
@@ -31213,7 +31219,11 @@ Cell[BoxData[
     RowBox[{"Text", "[", 
      RowBox[{
       RowBox[{"Style", "[", 
-       RowBox[{"\"\<Morph 3\>\"", ",", "12"}], "]"}], ",", 
+       RowBox[{"\"\<Morph 3\>\"", ",", 
+        RowBox[{"FontFamily", "->", "\"\<Calibri\>\""}], ",", "12", ",", 
+        RowBox[{
+        "cols", "\[LeftDoubleBracket]", "3", "\[RightDoubleBracket]"}]}], 
+       "]"}], ",", 
       RowBox[{"{", 
        RowBox[{
         RowBox[{"0.6", "-", "0.09"}], ",", 
@@ -31222,15 +31232,16 @@ Cell[BoxData[
           RowBox[{"\[Sqrt]", "3"}], "2"], "+", "0.12"}]}], "}"}]}], "]"}], 
     "]"}]}], "\[IndentingNewLine]", "]"}]], "Input",
  CellChangeTimes->{{3.947665257277214*^9, 3.9476652866931877`*^9}, {
-  3.95025884135627*^9, 3.950258842153336*^9}, {3.950258872197627*^9, 
-  3.9502588743133917`*^9}, {3.9502589539895277`*^9, 3.950258990475645*^9}, {
-  3.950259379746557*^9, 3.950259457777153*^9}, {3.9502595613997726`*^9, 
-  3.95025961829652*^9}, {3.9502654138559113`*^9, 3.9502654152465487`*^9}, {
-  3.950265507624812*^9, 3.950265510934457*^9}, {3.950265561838235*^9, 
-  3.950265576178279*^9}, {3.950265738201913*^9, 3.9502657388312807`*^9}, {
-  3.950265774846386*^9, 3.950265778425756*^9}, {3.9658906370803747`*^9, 
-  3.965890637727083*^9}, {3.965891265049286*^9, 3.96589140993643*^9}},
- CellLabel->"In[70]:=",ExpressionUUID->"ddabf643-838f-4c7e-b5a5-8f0e7d8dbf55"],
+   3.95025884135627*^9, 3.950258842153336*^9}, {3.950258872197627*^9, 
+   3.9502588743133917`*^9}, {3.9502589539895277`*^9, 3.950258990475645*^9}, {
+   3.950259379746557*^9, 3.950259457777153*^9}, {3.9502595613997726`*^9, 
+   3.95025961829652*^9}, {3.9502654138559113`*^9, 3.9502654152465487`*^9}, {
+   3.950265507624812*^9, 3.950265510934457*^9}, {3.950265561838235*^9, 
+   3.950265576178279*^9}, {3.950265738201913*^9, 3.9502657388312807`*^9}, {
+   3.950265774846386*^9, 3.950265778425756*^9}, {3.9658906370803747`*^9, 
+   3.965890637727083*^9}, {3.965891265049286*^9, 3.96589140993643*^9}, 
+   3.9684882262863703`*^9},ExpressionUUID->"ddabf643-838f-4c7e-b5a5-\
+8f0e7d8dbf55"],
 
 Cell[BoxData[
  GraphicsBox[{{
@@ -31453,8 +31464,7 @@ nnbCuU4a/eymijhesJhr7OQTo4M8wVraCKOO7XxkB8d5TitPCGW+rf1jHnOZ
 w2xmMZMZTCeYaUxlCkFMZhITmTD2hRGX7WhM
           "]]}}], {}}, {{}, {
        {RGBColor[
-        0.33333333333333337`, 0.33333333333333337`, 
-         0.33333333333333337`], {}}, 
+        0.33333333333333337`, 0.33333333333333337`, 0.33333333333333337`]}, 
        {RGBColor[
         0.33333333333333337`, 0.33333333333333337`, 0.33333333333333337`], 
         PolygonBox[CompressedData["
@@ -38799,21 +38809,24 @@ pmLn8w+SswKUeJpBWzXUxWKGfJIf+IsSFrtWjQ/arsA/aV93jQ==
                 ")"}]}], "\[Equal]", "0"}]],
          Annotation[#, 
           HoldForm[$CellContext`y1] (0. + 
-            2 (0. + 0.8 
-               HoldForm[$CellContext`y1]^2/((1 - HoldForm[$CellContext`y1])^2 + 
-               HoldForm[$CellContext`y1]^2)) - 2 
+            2 (0. + 0.8 (
+                HoldForm[$CellContext`y1]^2/((1 - 
+                  HoldForm[$CellContext`y1])^2 + 
+                HoldForm[$CellContext`y1]^2))) - 2 
             HoldForm[$CellContext`y1] (0. + 
-             0.8 HoldForm[$CellContext`y1]^2/((1 - 
-                HoldForm[$CellContext`y1])^2 + HoldForm[$CellContext`y1]^2)) - 
-            2.5 HoldForm[$CellContext`y2] (0. + 
-             0.8 HoldForm[$CellContext`y2]^2/((1 - 
-                HoldForm[$CellContext`y2])^2 + HoldForm[$CellContext`y2]^2)) - 
+             0.8 (HoldForm[$CellContext`y1]^2/((1 - 
+                 HoldForm[$CellContext`y1])^2 + 
+               HoldForm[$CellContext`y1]^2))) - 2.5 
+            HoldForm[$CellContext`y2] (0. + 
+             0.8 (HoldForm[$CellContext`y2]^2/((1 - 
+                 HoldForm[$CellContext`y2])^2 + 
+               HoldForm[$CellContext`y2]^2))) - 
             3 (1 - HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2]) (0. + 
-             0.8 (1 - HoldForm[$CellContext`y1] - 
-                HoldForm[$CellContext`y2])^2/((1 - HoldForm[$CellContext`y1] - 
-                HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
-                HoldForm[$CellContext`y2])^2))) == 0, "Tooltip"]& ]}], {}}, {
-      GraphicsComplexBox[CompressedData["
+             0.8 ((1 - HoldForm[$CellContext`y1] - 
+                 HoldForm[$CellContext`y2])^2/((1 - HoldForm[$CellContext`y1] - 
+                 HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
+                 HoldForm[$CellContext`y2])^2)))) == 0, 
+          "Tooltip"]& ]}], {}}, {GraphicsComplexBox[CompressedData["
 1:eJxFlHs01HkYxmfpaiXakXRjcksunYoimwdJpiVtu5giDcUql0lbGbGKo7ZD
 VoSs3LqpEJFiR6qRYUK5/mZ+c/WLdHLpZEsXUW27Z5vec97z/vP94/083/d5
 GEGcrcFqNBot8HP/O63WLxzuWz0f5vm7F1jxKJD7JmNxNgYhjy0vO2dQqOvg
@@ -38942,19 +38955,22 @@ Pfoha5TQf3YkdOszCh1+MRoOTCX+ATqbCr0=
          Annotation[#, 
           HoldForm[$CellContext`y2] (0. - 2 
             HoldForm[$CellContext`y1] (0. + 
-             0.8 HoldForm[$CellContext`y1]^2/((1 - 
-                HoldForm[$CellContext`y1])^2 + HoldForm[$CellContext`y1]^2)) + 
-            2.5 (0. + 0.8 
-               HoldForm[$CellContext`y2]^2/((1 - HoldForm[$CellContext`y2])^2 + 
-               HoldForm[$CellContext`y2]^2)) - 2.5 
+             0.8 (HoldForm[$CellContext`y1]^2/((1 - 
+                 HoldForm[$CellContext`y1])^2 + 
+               HoldForm[$CellContext`y1]^2))) + 
+            2.5 (0. + 0.8 (
+                HoldForm[$CellContext`y2]^2/((1 - 
+                  HoldForm[$CellContext`y2])^2 + 
+                HoldForm[$CellContext`y2]^2))) - 2.5 
             HoldForm[$CellContext`y2] (0. + 
-             0.8 HoldForm[$CellContext`y2]^2/((1 - 
-                HoldForm[$CellContext`y2])^2 + HoldForm[$CellContext`y2]^2)) - 
+             0.8 (HoldForm[$CellContext`y2]^2/((1 - 
+                 HoldForm[$CellContext`y2])^2 + 
+               HoldForm[$CellContext`y2]^2))) - 
             3 (1 - HoldForm[$CellContext`y1] - HoldForm[$CellContext`y2]) (0. + 
-             0.8 (1 - HoldForm[$CellContext`y1] - 
-                HoldForm[$CellContext`y2])^2/((1 - HoldForm[$CellContext`y1] - 
-                HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
-                HoldForm[$CellContext`y2])^2))) == 0, 
+             0.8 ((1 - HoldForm[$CellContext`y1] - 
+                 HoldForm[$CellContext`y2])^2/((1 - HoldForm[$CellContext`y1] - 
+                 HoldForm[$CellContext`y2])^2 + (HoldForm[$CellContext`y1] + 
+                 HoldForm[$CellContext`y2])^2)))) == 0, 
           "Tooltip"]& ]}], {}}}, {{{
      0.4999999999999997, -0.49999999999999994`}, {-0.8660254037844388, \
 -0.8660254037844385}}, {0.49999999999999956`, 0.8660254037844385}}], 
@@ -38982,7 +38998,6 @@ Pfoha5TQf3YkdOszCh1+MRoOTCX+ATqbCr0=
                  AbsoluteThickness[2], 
                  GrayLevel[0], 
                  PointSize[0.025]], 
-                
                 Point[{{0.36295409636050485`, 0.33057448421209695`}, {
                  0.36295409636050546`, 0.33057448421209723`}, {
                  0.36295409636044174`, 0.33057448421218877`}, {
@@ -39756,7 +39771,7 @@ CellTagsIndex->{}
 Notebook[{
 Cell[CellGroupData[{
 Cell[576, 22, 160, 3, 79, "Subsection",ExpressionUUID->"3eb1c394-6416-4715-88ec-c00c71407557"],
-Cell[739, 27, 3781, 102, 411, "Input",ExpressionUUID->"f53398d5-3855-431a-ba95-a5c34ca7cac5"]
+Cell[739, 27, 3781, 102, 442, "Input",ExpressionUUID->"f53398d5-3855-431a-ba95-a5c34ca7cac5"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[4557, 134, 162, 3, 101, "Chapter",ExpressionUUID->"f703dab7-4b3e-407a-a9b5-b19d93d12299"],
@@ -39767,7 +39782,7 @@ Cell[6652, 192, 640, 13, 50, "Output",ExpressionUUID->"e00d1b6c-a742-419f-9d0c-5
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[7329, 210, 154, 3, 99, "Section",ExpressionUUID->"c6ebc965-2a55-4c12-9a1f-13ded63226e9"],
-Cell[7486, 215, 21282, 523, 1369, "Input",ExpressionUUID->"fd9e9c41-8849-4041-bc33-1433180b019b"],
+Cell[7486, 215, 21282, 523, 1597, "Input",ExpressionUUID->"fd9e9c41-8849-4041-bc33-1433180b019b"],
 Cell[CellGroupData[{
 Cell[28793, 742, 224, 3, 44, "Input",ExpressionUUID->"e45ecf1c-9ff9-4a9b-8a5e-ddc78b3b6c87"],
 Cell[29020, 747, 13718, 269, 378, "Output",ExpressionUUID->"ced095eb-69fa-4401-88ac-c32229e18d01"]
@@ -39775,49 +39790,48 @@ Cell[29020, 747, 13718, 269, 378, "Output",ExpressionUUID->"ced095eb-69fa-4401-8
 Cell[42753, 1019, 603, 11, 44, "Input",ExpressionUUID->"da6b4288-4d92-4542-9395-3ded4c70eb74"],
 Cell[CellGroupData[{
 Cell[43381, 1034, 203, 3, 44, "Input",ExpressionUUID->"2d97d45b-449d-4933-a5df-fd683a93b6ed"],
-Cell[43587, 1039, 1483863, 25396, 488, "Output",ExpressionUUID->"95555c77-a2ec-4bd4-8dc8-f93bd6c73ba0"]
+Cell[43587, 1039, 1484009, 25400, 488, "Output",ExpressionUUID->"95555c77-a2ec-4bd4-8dc8-f93bd6c73ba0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1527487, 26440, 616, 12, 44, "Input",ExpressionUUID->"e08b95d3-16aa-4ae2-b51f-288c0cabd10e"],
-Cell[1528106, 26454, 368, 5, 50, "Output",ExpressionUUID->"57ea678c-85ba-4820-8318-9fca186a57b2"]
+Cell[1527633, 26444, 616, 12, 44, "Input",ExpressionUUID->"e08b95d3-16aa-4ae2-b51f-288c0cabd10e"],
+Cell[1528252, 26458, 368, 5, 50, "Output",ExpressionUUID->"57ea678c-85ba-4820-8318-9fca186a57b2"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1528523, 26465, 157, 3, 99, "Section",ExpressionUUID->"934e3969-7966-4395-b107-bd953f3b77bf"],
-Cell[1528683, 26470, 203, 4, 44, "Input",ExpressionUUID->"0f8a3016-3b78-4dd8-95a4-c91e0ffa2553"],
-Cell[1528889, 26476, 773, 16, 166, "Input",ExpressionUUID->"8890fc48-a12b-4bc3-b7a2-2395e58e2dcd"],
+Cell[1528669, 26469, 157, 3, 99, "Section",ExpressionUUID->"934e3969-7966-4395-b107-bd953f3b77bf"],
+Cell[1528829, 26474, 773, 16, 166, "Input",ExpressionUUID->"8890fc48-a12b-4bc3-b7a2-2395e58e2dcd"],
 Cell[CellGroupData[{
-Cell[1529687, 26496, 8852, 191, 472, "Input",ExpressionUUID->"0d4ad85f-da43-43a8-b778-39026a1d764b"],
-Cell[1538542, 26689, 365, 6, 50, "Output",ExpressionUUID->"c7a39145-dfbc-4c3e-97c1-cc7637ca67e0"]
+Cell[1529627, 26494, 8852, 191, 687, "Input",ExpressionUUID->"0d4ad85f-da43-43a8-b778-39026a1d764b"],
+Cell[1538482, 26687, 365, 6, 50, "Output",ExpressionUUID->"c7a39145-dfbc-4c3e-97c1-cc7637ca67e0"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1538944, 26700, 2965, 68, 135, "Input",ExpressionUUID->"41bf3fc6-546d-4bcd-8607-bb861a881f2d"],
-Cell[1541912, 26770, 53262, 989, 325, "Output",ExpressionUUID->"861253f8-2f73-4a47-a0a8-372b5add5103"]
+Cell[1538884, 26698, 2965, 68, 197, "Input",ExpressionUUID->"41bf3fc6-546d-4bcd-8607-bb861a881f2d"],
+Cell[1541852, 26768, 53262, 989, 325, "Output",ExpressionUUID->"861253f8-2f73-4a47-a0a8-372b5add5103"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1595211, 27764, 2756, 65, 135, "Input",ExpressionUUID->"a3019c3b-11b8-4191-b16c-f5d81cb8dbdc"],
-Cell[1597970, 27831, 53331, 988, 325, "Output",ExpressionUUID->"7e37b6c5-60f0-4a67-85ee-6c9efa92e7cb"]
+Cell[1595151, 27762, 2756, 65, 197, "Input",ExpressionUUID->"a3019c3b-11b8-4191-b16c-f5d81cb8dbdc"],
+Cell[1597910, 27829, 53331, 988, 325, "Output",ExpressionUUID->"7e37b6c5-60f0-4a67-85ee-6c9efa92e7cb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1651338, 28824, 2754, 65, 135, "Input",ExpressionUUID->"d55db9d3-eef5-4f53-a961-ce915ef30ece"],
-Cell[1654095, 28891, 48313, 868, 325, "Output",ExpressionUUID->"00f41a37-185a-4273-a157-3e2182edfac4"]
+Cell[1651278, 28822, 2754, 65, 197, "Input",ExpressionUUID->"d55db9d3-eef5-4f53-a961-ce915ef30ece"],
+Cell[1654035, 28889, 48313, 868, 325, "Output",ExpressionUUID->"00f41a37-185a-4273-a157-3e2182edfac4"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1702445, 29764, 3979, 102, 166, "Input",ExpressionUUID->"be55bd62-0a64-4aba-af11-35bf535ff0e2"],
-Cell[1706427, 29868, 36802, 700, 86, "Output",ExpressionUUID->"2492dbaf-78bc-4bdd-b9b3-25eccd8a6f15"]
+Cell[1702385, 29762, 3979, 102, 350, "Input",ExpressionUUID->"be55bd62-0a64-4aba-af11-35bf535ff0e2"],
+Cell[1706367, 29866, 36802, 700, 86, "Output",ExpressionUUID->"2492dbaf-78bc-4bdd-b9b3-25eccd8a6f15"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1743266, 30573, 962, 23, 44, "Input",ExpressionUUID->"81867d27-6014-43d2-9ea2-6f05a1399843"],
-Cell[1744231, 30598, 10153, 215, 300, "Output",ExpressionUUID->"efa10d8a-b2a6-45d6-9430-9311b7fc4f10"]
+Cell[1743206, 30571, 962, 23, 74, "Input",ExpressionUUID->"81867d27-6014-43d2-9ea2-6f05a1399843"],
+Cell[1744171, 30596, 10153, 215, 300, "Output",ExpressionUUID->"efa10d8a-b2a6-45d6-9430-9311b7fc4f10"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1754421, 30818, 1807, 45, 74, "Input",ExpressionUUID->"012dbb2d-5694-4c66-8cc7-505eeb8c7c4c"],
-Cell[1756231, 30865, 10466, 255, 348, "Output",ExpressionUUID->"a36e2e36-8abd-4d20-9b2f-5e00f018cefb"]
+Cell[1754361, 30816, 1807, 45, 105, "Input",ExpressionUUID->"012dbb2d-5694-4c66-8cc7-505eeb8c7c4c"],
+Cell[1756171, 30863, 10466, 255, 348, "Output",ExpressionUUID->"a36e2e36-8abd-4d20-9b2f-5e00f018cefb"]
 }, Open  ]],
-Cell[1766712, 31123, 961, 25, 44, "Input",ExpressionUUID->"5bd46f26-1162-4374-ac4e-9cf627eb9d07"],
+Cell[1766652, 31121, 961, 25, 74, "Input",ExpressionUUID->"5bd46f26-1162-4374-ac4e-9cf627eb9d07"],
 Cell[CellGroupData[{
-Cell[1767698, 31152, 3285, 80, 400, "Input",ExpressionUUID->"ddabf643-838f-4c7e-b5a5-8f0e7d8dbf55"],
-Cell[1770986, 31234, 492350, 8499, 393, "Output",ExpressionUUID->"35a6d547-0353-4571-a197-a0a58ec34000"]
+Cell[1767638, 31150, 3797, 93, 400, "Input",ExpressionUUID->"ddabf643-838f-4c7e-b5a5-8f0e7d8dbf55"],
+Cell[1771438, 31245, 492455, 8503, 393, "Output",ExpressionUUID->"35a6d547-0353-4571-a197-a0a58ec34000"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]

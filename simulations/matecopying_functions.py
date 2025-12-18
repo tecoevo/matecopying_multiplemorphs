@@ -14,14 +14,15 @@ n_matings = params.n_matings # number of matings in one generation
 n_runs = params.n_runs # number of independent runs
 m = params.m # number of male morphs
 T = params.T # number of generations
-b = params.b # extent of conformism (beta)
+b = params.b # extent of conformism (beta) for Type I copying functions
 y_range = params.y_range # range of initial frequencies
 q_values = params.q_values # male morph qualities
-c_range = params.c_range # range of copying probabilities
-copying_type = params.copying_type # type of mate copying to determine copying probabilities
+c_range = params.c_range # range of copying probabilities (gamma)
+copying_type = params.copying_type # to determine copying probabilities (1=Type I, 2=Type II, 3=Type II mixed)
 factor = params.factor # modulates the extent of conformity/anticonfrmity, higher means less conformity
 threshold_2m = params.threshold_2m # threshold for copying type 3, m=2
 threshold_3m = params.threshold_3m # threshold for copying type 3, m>2
+BR_type = params.BR_type # type of anticonformity function
 
 def generate_grid(n):
     grid = []
@@ -42,17 +43,27 @@ def choose(m, array, probabilities):
 
     return chosen
 
-def compute_D(greater_vals, b, factor):
-    #if b<0: 
-    #    print("Invalid value of b, assuming b=1")
-    #    b=1
+def compute_D(greater_vals, b, factor, BR_type=False):
+    y_max = np.max(greater_vals)
+    D_lim = min((1/y_max - 1)*sum(greater_vals), sum(greater_vals))
     if b>=1:
-        y_max = np.max(greater_vals)
-        D_max = (1/y_max - 1)*sum(greater_vals)
-        return D_max/factor
+        if BR_type: 
+            D = D_lim/factor
+        else:
+            y_max = np.max(greater_vals)
+            D_max = (1/y_max - 1)*sum(greater_vals)
+            D = D_max/factor
     elif b<1:
-        D_min = -sum(greater_vals)
-        return D_min/factor
+        if BR_type:
+            D = -D_lim/factor
+        else:
+            D_min = -sum(greater_vals)
+            D = D_min/factor
+    else:
+        print("Invalid value of b, returning D=0")
+        D = 0
+    
+    return D
     
 def copying_probabilities(y_t, b, factor, copying_type=1):
     """ computes switching probabilities based on the type of mate copying: 
@@ -92,7 +103,7 @@ def copying_probabilities(y_t, b, factor, copying_type=1):
 
             # compute value of D
             if len(greater_vals)==0: D = 0
-            else: D = compute_D(greater_vals, b, factor)
+            else: D = compute_D(greater_vals, b, factor, BR_type)
 
             # convert to copying probabilities
             # greater than majority
@@ -141,11 +152,8 @@ def copying_probabilities(y_t, b, factor, copying_type=1):
             D_conf = 0
             D_anti = 0
         else: 
-            D_conf = compute_D(greater_vals, b=2, factor = factor)
-            D_anti = compute_D(greater_vals, b=-2, factor = factor)
-
-        ##### testing
-        #print([D_conf, D_anti, y_t])
+            D_conf = compute_D(greater_vals, b=2, factor = factor, BR_type=BR_type)
+            D_anti = compute_D(greater_vals, b=-2, factor = factor, BR_type=BR_type)
 
         if m==2:
             threshold = threshold_2m
@@ -153,30 +161,71 @@ def copying_probabilities(y_t, b, factor, copying_type=1):
             threshold = threshold_3m
 
         if len(greater_vals)!=0: 
-            #mask_conf = greater_vals >= threshold
-            #mask_anti = greater_vals < threshold
             mask_conf = greater_vals < threshold
             mask_anti = greater_vals >= threshold
 
-            # convert to copying probabilities
-            # greater than majority (adjust according to threshold)
-            greater_vals[mask_conf] += (greater_vals[mask_conf] / np.sum(greater_vals)) * D_conf
-            greater_vals[mask_anti] += (greater_vals[mask_anti] / np.sum(greater_vals)) * D_anti
-            # less than majority
-            inv_y = np.zeros_like(less_vals, dtype=float)
-            mask = np.abs(less_vals) > 1e-5
-            inv_y[mask] = 1 / less_vals[mask]
+            if len(greater_vals[mask_anti])!=0:
+                # convert to copying probabilities
+                # greater than majority (adjust according to threshold)
+                greater_vals[mask_conf] += (greater_vals[mask_conf] / np.sum(greater_vals)) * D_conf
+                greater_vals[mask_anti] += (greater_vals[mask_anti] / np.sum(greater_vals)) * D_anti
 
-            if np.sum(inv_y) == 0:
-                factors = np.zeros_like(inv_y)
-            else:
-                factors = inv_y / np.sum(inv_y)
+                # less than majority
+                mask_conf2 = less_vals > 1-threshold
+                mask_anti2 = less_vals <= 1-threshold
+                
+                inv_y = np.zeros_like(less_vals, dtype=float)
+                mask = np.abs(less_vals) > 1e-5
+                inv_y[mask] = 1 / less_vals[mask]
+
+                if np.sum(inv_y) == 0:
+                    factors = np.zeros_like(inv_y)
+                else:
+                    factors = inv_y / np.sum(inv_y)
         
-            less_vals = less_vals - factors * D_conf
-            #print(factors)
-            #inv_y = 1/less_vals
-            #factors = inv_y / np.sum(inv_y)
-            #less_vals = less_vals - factors*D_conf
+                less_vals[mask_anti2] -= factors*D_anti
+                less_vals[mask_conf2] -= factors*D_conf
+            else:
+                # greater than majority
+                greater_vals += (greater_vals/sum(greater_vals))*D_conf
+    
+                # less than majority
+                inv_y = np.zeros_like(less_vals, dtype=float)
+                mask = np.abs(less_vals) > 1e-5
+                inv_y[mask] = 1 / less_vals[mask]
+
+                if np.sum(inv_y) == 0:
+                    factors = np.zeros_like(inv_y)
+                else:
+                    factors = inv_y / np.sum(inv_y)
+        
+                less_vals = less_vals - factors*D_conf
+    
+        # if len(greater_vals)!=0: 
+        #     #mask_conf = greater_vals >= threshold
+        #     #mask_anti = greater_vals < threshold
+        #     mask_conf = greater_vals < threshold
+        #     mask_anti = greater_vals >= threshold
+
+        #     # convert to copying probabilities
+        #     # greater than majority (adjust according to threshold)
+        #     greater_vals[mask_conf] += (greater_vals[mask_conf] / np.sum(greater_vals)) * D_conf
+        #     greater_vals[mask_anti] += (greater_vals[mask_anti] / np.sum(greater_vals)) * D_anti
+        #     # less than majority
+        #     inv_y = np.zeros_like(less_vals, dtype=float)
+        #     mask = np.abs(less_vals) > 1e-5
+        #     inv_y[mask] = 1 / less_vals[mask]
+
+        #     if np.sum(inv_y) == 0:
+        #         factors = np.zeros_like(inv_y)
+        #     else:
+        #         factors = inv_y / np.sum(inv_y)
+        
+        #     less_vals = less_vals - factors * D_conf
+        #     #print(factors)
+        #     #inv_y = 1/less_vals
+        #     #factors = inv_y / np.sum(inv_y)
+        #     #less_vals = less_vals - factors*D_conf
                 
         # construct vector of copying probabilities
         probs = np.empty_like(vec)

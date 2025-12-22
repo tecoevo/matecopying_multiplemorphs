@@ -9,22 +9,40 @@ def generate_grid(n):
             grid.append((x, y, z))
     return grid
 
+
 ### Set parameter values
 
 # Number of male morphs
 m = 2 
-# Extent of (anti)conformity for Type I copying (beta)
-b = -2 
-# Modulates the extent of conformity/anticonfrmity, higher means less conformity
-factor = 3 
-# Type of mate copying to determine switching probabilities
+
+# beta, the extent of (anti)conformity for Type I copying
+# b > 1: conformity
+# b = 1: frequency-proportional copying
+# b < -1: strong anticonformity
+# 0 < b < 1: weak anticonformity
+b = 2
+
+# f, the extent of (anti)confrmity for Type II copying
+# 0 < f < 1: conformity
+# -1 < f < 0: anticonformity
+# f = 0: frequency-proportional copying
+f = 0.83
+
+# Type of mate copying to determine switching probabilities 
+# 1: Type I copying function
+# 2: Type II (purely conformist or anticonformist) copying function 
+# 3: Type II (mixed conformist and anticonformist) copying function 
 copying_type = 3
 
+# Threshold for conformity in Type II mixed copying functions
+# For 2 morphs: threshold_2m
+# For 3 morphs: threshold_3m
 threshold_2m = 0.7
 threshold_3m = 0.5
-# Type of anticonformity function (BR type or strong)
-BR_type = False 
 
+# Strong anticonformity (True/False)
+# Only for 2 morph simulations
+strong_anticonformity = False 
 
 # Male population size, total population is twice this number
 n_population = 100 
@@ -33,16 +51,15 @@ n_matings = 100
 # Number of independent runs
 n_runs = 50 
 # Number of generations
-T = 50 
+T = 25 
 
-
-
+### Set initial conditions
 
 if m==2:
     y_range = np.around(np.arange(0,1.001,0.01), 2)
     q_values = np.array([3,2])
-    c_range = np.around(np.arange(0,1.001,0.01), 2) # mate copying probability (gamma)
+    c_range = np.around(np.arange(0,1.001,0.01), 2) # Mate copying probability (gamma)
 if m==3:
     y_range = generate_grid(50)
     q_values = np.array([3,2.5,2])
-    c_range = np.around(np.arange(0,1.001,0.05), 2) # mate copying probability (gamma)
+    c_range = np.around(np.arange(0,1.001,0.05), 2) # Mate copying probability (gamma)

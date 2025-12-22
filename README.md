@@ -29,6 +29,7 @@ This repository contains all simulation data, analysis scripts, and figure-gener
 
 ## Repository Structure
 
+<pre>
 ├── LICENSE
 ├── New_Revised_Figures
 │   ├── Fig_1_cartoon
@@ -233,6 +234,7 @@ This repository contains all simulation data, analysis scripts, and figure-gener
     ├── matecopying_functions.py
     ├── matecopying_main.py
     └── matecopying_params.py
+</pre>
     
 ---
 

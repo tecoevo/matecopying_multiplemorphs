@@ -33,7 +33,7 @@ threshold_3m = params.threshold_3m # threshold for copying type 3, m>2
 BR_type = params.BR_type # type of anticonformity function
 
 # directory to save simulation data
-out_dir = "simulation_data/2m_real_f2/"
+out_dir = "simulation_data/3m_disc_conf_re/"
 data_dir = f'{out_dir}/data'
 out_file = f'{out_dir}/out.csv'
 params_file = f'{out_dir}/params.csv'

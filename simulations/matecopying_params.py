@@ -1,6 +1,7 @@
 import numpy as np
 
 def generate_grid(n):
+    '''Helper function to generate the set of initial points for simulations with 3 morphs'''
     grid = []
     for x in np.linspace(0, 1, n):
         for y in np.linspace(0, 1 - x, n - int(x * n)):
@@ -8,18 +9,34 @@ def generate_grid(n):
             grid.append((x, y, z))
     return grid
 
-### parameter values
-n_population = 100 # male population, total population is twice this number
-n_matings = 100 # number of matings in one generation
-n_runs = 50 # number of independent runs
-m = 2 # number of male morphs
-T = 25 # number of generations
-b = -2 # extent of conformism (beta)
-copying_type = 3 # type of mate copying to determine copying probabilities
-factor = 2 # modulates the extent of conformity/anticonfrmity, higher means less conformity
+### Set parameter values
+
+# Number of male morphs
+m = 2 
+# Extent of (anti)conformity for Type I copying (beta)
+b = -2 
+# Modulates the extent of conformity/anticonfrmity, higher means less conformity
+factor = 3 
+# Type of mate copying to determine switching probabilities
+copying_type = 3
+
 threshold_2m = 0.7
 threshold_3m = 0.5
-BR_type = False # type of anticonformity function (BR type or strong)
+# Type of anticonformity function (BR type or strong)
+BR_type = False 
+
+
+# Male population size, total population is twice this number
+n_population = 100 
+# Number of matings in one generation
+n_matings = 100 
+# Number of independent runs
+n_runs = 50 
+# Number of generations
+T = 50 
+
+
+
 
 if m==2:
     y_range = np.around(np.arange(0,1.001,0.01), 2)

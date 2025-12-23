@@ -350,7 +350,7 @@ If you use this code or data, please cite:
 
 For questions, collaborations, or reproducibility inquiries, please contact:  
 **Chaitanya S. Gokhale**  
-Center for Computational and Theoretical Biology, University of Würzburg  
+Chair for Computational and Theoretical Biology, University of Würzburg  
 📧 chaitanya.gokhale@uni-wuerzburg.de  
 
 ---

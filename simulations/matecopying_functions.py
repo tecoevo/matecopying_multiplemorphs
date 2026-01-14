@@ -23,8 +23,8 @@ c_range = params.c_range
 ### Define functions 
 
 def choose(m, array, probabilities):
-    """ Chooses an index from 1 to m with given probabilities 
-    and makes sure that array[index] is at least 1 """
+    ''' Chooses an index from 1 to m with given probabilities 
+    and makes sure that array[index] is at least 1 '''
 
     chosen = np.random.choice(range(m), p=probabilities)
     if array[chosen]<1:
@@ -42,16 +42,15 @@ def compute_D(greater_vals, f, strong_anticonformity=True):
     
     y_max = np.max(greater_vals)
     D_max = (1/y_max - 1)*sum(greater_vals)
-    D_min = -sum(greater_vals)
+    D_min = sum(greater_vals)
 
-    if f>0: 
+    if f>0: # conformity
         D = D_max*f
-    elif f<0:
-        f_abs = abs(f)
+    elif f<0: # anticonformity
         if strong_anticonformity: 
-            D = D_min*f_abs
+            D = D_min*f
         else: 
-            D = -D_max*f_abs
+            D = D_max*f
     else:
         D = 0
     
@@ -68,28 +67,30 @@ def switching_probabilities(y_t, b, f, copying_type=1, strong_anticonformity=Tru
     if len(y_t)>2:
         strong_anticonformity = True
 
+    # Type I copying function
     if copying_type==1:
-        if -1 < b <= 0:
-            raise ValueError(f"b must be < -1 or > 0, got {b}")
+        if b == 0:
+            raise ValueError(f"b must be non-zero")
         
-        if b >= 1: # Conformity 
+        if b >= 1: # conformity 
             # Note: these probabilities are not normalised here, 
             # but will be normalised later for this case
             probs = (y_t**b)/(y_t**b + (1-y_t)**b)    
-        else: # Anticonformity
-            if b <= -1: 
+        else: 
+            if b < 0: # strong anticonformity
                 probs = np.where((y_t==0) | (y_t==1), y_t, (y_t**b) / (y_t**b + (1-y_t)**b)) 
-            else:
+            else: # weak anticonformity
                 probs = (y_t**b)/(y_t**b + (1-y_t)**b)
             
             # Normalize the probabilities
             prob_sum = sum(probs)
             probs = probs/prob_sum
-            
+
+    # Type II (purely conformist or anticonformist) copying function     
     elif copying_type==2:
         majority = 1/len(y_t)
         vec = np.array(y_t)
-            
+        
         # Partition the frequencies
         greater_idx = np.where(vec > majority)[0]
         equal_idx = np.where(vec == majority)[0]
@@ -126,6 +127,7 @@ def switching_probabilities(y_t, b, f, copying_type=1, strong_anticonformity=Tru
         prob_sum = sum(probs)
         probs = probs/prob_sum
 
+    # Type II (mixed conformist and anticonformist) copying function
     elif copying_type==3:
         majority = 1/len(y_t)
         vec = np.array(y_t)
@@ -242,7 +244,7 @@ def one_generation(c, y_t, n_matings):
             chosen_fem = choose(m,n_assort,q_proportion)
             
             # Normalize the probabilities for Type I conformist copying
-            # They depend on the initial peference of the chossing female
+            # They depend on the initial peference of the choosing female
             probs = switching_probs
             probs[chosen_fem] = 0
             prob_sum = sum(probs)
@@ -272,7 +274,7 @@ def one_generation(c, y_t, n_matings):
         
         n_tries.append(counter)
 
-        ### Deaths, keeping the population at a constant size
+        # Deaths, keeping the population at a constant size
         n_deaths = n_births 
         for death in range(n_deaths):
             dying_one = choose(m, n_morphpop, y_t)

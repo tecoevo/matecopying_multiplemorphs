@@ -41,7 +41,7 @@ threshold_2m = 0.7
 threshold_3m = 0.5
 
 # Strong anticonformity (True/False)
-# Only for 2 morph simulations
+# Only for m=2
 strong_anticonformity = False 
 
 # Male population size, total population is twice this number
@@ -56,10 +56,10 @@ T = 25
 ### Set initial conditions
 
 if m==2:
-    y_range = np.around(np.arange(0,1.001,0.01), 2)
-    q_values = np.array([3,2])
+    y_range = np.around(np.arange(0,1.001,0.01), 2) # Initial male morph frequencies
+    q_values = np.array([3,2]) # Mate morph qualities
     c_range = np.around(np.arange(0,1.001,0.01), 2) # Mate copying probability (gamma)
 if m==3:
-    y_range = generate_grid(50)
-    q_values = np.array([3,2.5,2])
+    y_range = generate_grid(50) # Initial male morph frequencies
+    q_values = np.array([3,2.5,2]) # Mate morph qualities
     c_range = np.around(np.arange(0,1.001,0.05), 2) # Mate copying probability (gamma)

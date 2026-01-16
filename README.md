@@ -96,16 +96,25 @@ This repository contains all simulation data, analysis scripts, and figure-gener
 │   │   ├── typeII_anticonformist_f1.2
 │   │   └── typeI_anticonformist_b-2
 │   └── Fig_SI_fixtime
-│       ├── Fig_2.nb
-│       ├── Fig_fixationtime_23morphs.pdf
-│       ├── Untitled.pdf
-│       ├── fig2a_data.csv
-│       ├── fig2b_data.csv
-│       ├── fig2c_data.csv
-│       ├── fixationtime3morphs.pdf
-│       ├── fixationtime_23morphs.graffle
-│       ├── threemorphdynamics_fixtime.mp4
-│       └── threemorphdynamics_fixtime.nb
+│   │   ├── Fig_2.nb
+│   │   ├── Fig_fixationtime_23morphs.pdf
+│   │   ├── Untitled.pdf
+│   │   ├── fig2a_data.csv
+│   │   ├── fig2b_data.csv
+│   │   ├── fig2c_data.csv
+│   │   ├── fixationtime3morphs.pdf
+│   │   ├── fixationtime_23morphs.graffle
+│   │   ├── threemorphdynamics_fixtime.mp4
+│   │   └── threemorphdynamics_fixtime.nb
+│   └── Fig_SI_weak
+│       ├── typeII_anticonformist_weak_f0.5/
+│       ├── typeII_anticonformist_weak_f0.8/
+│       ├── typeII_mixed_f0.5/
+│       ├── typeII_mixed_weak_f0.5/
+│       ├── typeI_anticonformist_b0.5/
+│       ├── Fig_SI_Weak.nb
+│       ├── Fig_SI_weak.graffle
+│       ├── Fig_SI_weak.pdf
 ├── OlderFolders
 │   ├── Fig_dynamicgamma
 │   │   ├── Fig_dynamicgamma.graffle
